@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8' />
+  <link rel='icon' type='image/svg+xml' href='/logo.png' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <title>Leo</title>
+  <!--  !!!РАБОТАЮЩИЙ ВАРИАНТ-->
+  <link href="https://tlum.ru/uploads/Kidoz_Leo/fonts/fonts.css" rel="stylesheet">
+  <!--  !!!РАБОТАЮЩИЙ ВАРИАНТ-->
+</head>
+<body>
+<style>
+    @import url("https://tlum.ru/uploads/Kidoz_Leo/assets/index.5ed5aced.css");
+    body * {
+        font-family: "RotondaC", sans-serif;
+        font-weight: 700;
+    }
+
+</style>
+<script src='mraid.js'></script>
+<script type='text/javascript'>
+  let src = "index.3405e1d9.js"
+
+  function startApp() {
+    const script = document.createElement('script');
+    script.setAttribute('src', `https://tlum.ru/uploads/Kidoz_Leo/assets/${src}`);
+    document.body.appendChild(script);
+  }
+
+  function initMraid() {
+    if (!isMraidAvailable()) {
+      showAd();
+      return;
+    }
+
+    if (mraid.getState() === 'loading') {
+      mraid.addEventListener('ready', onReady);
+    } else {
+      onReady();
+    }
+  }
+
+  function onReady() {
+    if (mraid.isViewable()) {
+      setupAd();
+    } else {
+      mraid.addEventListener('viewableChange', onDisplayed);
+    }
+  }
+
+  function onDisplayed(viewable) {
+    if (viewable) {
+      mraid.removeEventListener('viewableChange', onDisplayed);
+      setupAd();
+    }
+  }
+
+  function setupAd() {
+    mraid.setOrientationProperties({
+      allowOrientationChange: false,
+      forceOrientation: 'portrait'
+    });
+    showAd();
+  }
+
+  function isMraidAvailable() {
+    return typeof mraid !== 'undefined';
+  }
+
+  // Start our ad gameplay logic
+  function showAd() {
+    if (isMraidAvailable()) {
+      startApp()
+
+    }
+    else {
+      startApp()
+    }
+  }
+
+  function closeAd() {
+    console.log('closeAd');
+    if (isMraidAvailable()) {
+      mraid.close();
+    }
+  }
+</script>
+<div id='app'></div>
+<script type='text/javascript'>
+  initMraid();
+</script>
+
+</body>
