@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8' />
+  <link rel='icon' type='image/svg+xml' href='/logo.png' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <title>Leo</title>
+  <!--  !!!Our only working version for the fonts-->
+  <link href="https://tlum.ru/uploads/Kidoz_Leo/fonts/fonts.css" rel="stylesheet">
+  <!--  !!!Our only working version for the fonts-->
+</head>
+<body>
+<style>
+    @import url("https://tlum.ru/uploads/Kidoz_Leo/assets/index.5ed5aced.css");
+    body * {
+        font-family: "RotondaC", sans-serif;
+        font-weight: 700;
+    }
+
+</style>
+<script src='mraid.js'></script>
+<script type='text/javascript'>
+
+  function initMraid() {
+    if (!isMraidAvailable()) {
+      showAd();
+      return;
+    }
+
+    if (mraid.getState() === 'loading') {
+      mraid.addEventListener('ready', onReady);
+    } else {
+      onReady();
+    }
+  }
+
+  function onReady() {
+    if (mraid.isViewable()) {
+      setupAd();
+    } else {
+      mraid.addEventListener('viewableChange', onDisplayed);
+    }
+  }
+
+  function onDisplayed(viewable) {
+    if (viewable) {
+      mraid.removeEventListener('viewableChange', onDisplayed);
+      setupAd();
+    }
+  }
+
+  function setupAd() {
+    mraid.setOrientationProperties({
+      allowOrientationChange: false,
+      forceOrientation: 'landscape'
+    });
+    showAd();
+  }
+
+  function playVideo(https://anniekhripunova.github.io/2208-16_2208-12_WS_Tricks-10_1280.mp4) 
+  {
+    mraid.setOrientationProperties({
+      allowOrientationChange: false,
+      forceOrientation: 'landscape'
+    });
+ }
+
+  
+  function isMraidAvailable() {
+    return typeof mraid !== 'undefined';
+  }
+
+  // Start our ad gameplay logic
+  function showAd() {
+    if (isMraidAvailable()) {
+      startApp()
+
+    }
+    else {
+      startApp()
+    }
+  }
+
+  function closeAd() {
+    console.log('closeAd');
+    if (isMraidAvailable()) {
+      mraid.close();
+    }
+  }
+</script>
+<div id='app'></div>
+<script type='text/javascript'>
+  initMraid();
+</script>
+
+</body>
+</html>
