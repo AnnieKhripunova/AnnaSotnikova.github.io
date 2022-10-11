@@ -4,7 +4,7 @@
   <meta charset='UTF-8' />
   <link rel='icon' type='image/svg+xml' href='/logo.png' />
   <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-  <title>Leo</title>
+  <title>mraid.PlayVideo</title>
   <!--  !!!Our only working version for the fonts-->
   <link href="https://tlum.ru/uploads/Kidoz_Leo/fonts/fonts.css" rel="stylesheet">
   <!--  !!!Our only working version for the fonts-->
@@ -57,15 +57,18 @@
     showAd();
   }
 
-  function playVideo(https://anniekhripunova.github.io/2208-16_2208-12_WS_Tricks-10_1280.mp4) 
+ mraid.playVideo = function(https://anniekhripunova.github.io/2208-16_2208-12_WS_Tricks-10_1280.mp4) 
   {
     mraid.setOrientationProperties({
       allowOrientationChange: false,
       forceOrientation: 'landscape'
+      if (!mraid.isViewable()) {
+      broadcastEvent(EVENTS.ERROR, 'playVideo cannot be called until the ad is viewable', 'playVideo');
+      return;
+    }
     });
  }
 
-  
   function isMraidAvailable() {
     return typeof mraid !== 'undefined';
   }
