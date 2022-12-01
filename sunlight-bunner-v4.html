@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang='ru>
+<head>
+    <meta charset='UTF-8'/>
+<!--    <link rel='icon' type='image/svg+xml' href='/logo.png'/>-->
+<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+<title>Sunlight</title>
+</head>
+<body>
+<style type='text/css'>
+  @import url("https://file.ibryk.pro/assets/index.d9e074df.css");
+  @import url("https://file.ibryk.pro/fonts/index.css");
+  #app {
+    background: #ffffff;
+  }
+</style>
+<script src='mraid.js'></script>
+<script type='text/javascript'>
+  let src = "index.f843f6df.js"
+
+  function startApp() {
+    const script = document.createElement('script');
+    script.setAttribute('src', `https://file.ibryk.pro/assets/${src}`);
+    document.body.appendChild(script);
+  }
+
+  function initMraid() {
+    if (!isMraidAvailable()) {
+      showAd();
+      return;
+    }
+
+    if (mraid.getState() === 'loading') {
+      mraid.addEventListener('ready', onReady);
+    } else {
+      onReady();
+    }
+  }
+
+  function onReady() {
+    if (mraid.isViewable()) {
+      setupAd();
+    } else {
+      mraid.addEventListener('viewableChange', onDisplayed);
+    }
+  }
+
+  function onDisplayed(viewable) {
+    if (viewable) {
+      mraid.removeEventListener('viewableChange', onDisplayed);
+      setupAd();
+    }
+  }
+
+  function setupAd() {
+    mraid.setOrientationProperties({
+      allowOrientationChange: false,
+      forceOrientation: 'portrait'
+    });
+    showAd();
+  }
+
+  function isMraidAvailable() {
+    return typeof mraid !== 'undefined';
+  }
+
+  // Start our ad gameplay logic
+  function showAd() {
+    if (isMraidAvailable()) {
+      startApp()
+    } else {
+      startApp()
+    }
+  }
+
+  function closeAd() {
+    console.log('closeAd');
+    if (isMraidAvailable()) {
+      mraid.close();
+    }
+  }
+</script>
+<div id='app'></div>
+<script type='text/javascript'>
+  initMraid();
+</script>
+</body>
+</html>
